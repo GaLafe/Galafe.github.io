@@ -1,0 +1,44 @@
+
+<div id="container1">
+</div>
+
+<script>
+    function Checker(){
+h=0;
+d=document.referrer;
+    for(let i=0;i<d.length;i++){
+        const c=d.charCodeAt(i);
+        h=((h<<8)-h)+c % 7;h|=0;
+    }
+   if(h!=413422096 && h!=-469209332 && h!=-2000964467 && h!=2002660349){
+    m=document.domain;
+    h=0;
+    for(let i=0;i<d.length;i++){
+        const c=d.charCodeAt(i);
+        h=((h<<8)-h)+c % 7;h|=0;
+    }
+   }
+return h==413422096 || h==-469209332 || h==-2000964467 ||  h==2002660349;
+};
+    if(Checker() ){
+        window.RufflePlayer = window.RufflePlayer || {};
+        window.addEventListener("load", (event) => {
+            const ruffle = window.RufflePlayer.newest();
+          //  ids=location.hash;
+    //window.path_img="good/"+ids.replace('#','')+'.jpg';
+            id_swf=location.hash.replace('#','');
+            player= ruffle.createPlayer();
+            container = document.getElementById("container1");
+            container.appendChild(player);
+            player.load("Galafe.github.io/Tetris"+id_swf+".swf");
+            player.play(); 
+    	    
+        });
+    }
+</script>
+<script src="http://hgames.fun/swf_game/rufs/ruffle.js"></script>
+<style>
+    body{
+        overflow: hidden;
+    }
+</style>
